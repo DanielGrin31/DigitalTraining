@@ -1,3 +1,17 @@
+<html><head>
+	
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+<script type="text/javascript"
+        src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head></html>
 # First week summary:
 
 ## Table of contents
@@ -24,6 +38,15 @@
 	3. [Linear unit](#the-linear-unit)
 	4. [Activation function](#the-linear-unit)
 	5. [How do neural networks learn?](#how-do-neural-networks-learn)
+		- [Loss Function](#loss-function)
+		- [Optimizer](#optimizer)
+	5. [Other layers](#other-layers)
+		- [Dropout](#dropout)
+		- [Batch normalization](#batch-normalization)
+	6. [Classification](#classification)
+		- [Accuracy and cross entropy](#accuracy-and-cross-entropy)
+		- [Sigmoid](#sigmoid-function)
+	7. [convolutional neural networks](#convolutional-neural-networks)
 
 
 ## Machine learning
@@ -358,7 +381,7 @@ every neuron has its own weight its multiplied by before using its value in the 
 <img src="./assets/images/linear-unit.png" />
 </p>
 
-in this example we have one input neuron **X** , one bias with the value 1 and one weight for each **w** , **b** respectively,we also have a function that adds all its inputs up and the result of that function is the output,essentially this neural network describes the function `y=wx+b`,which is the equation of a line.
+in this example we have one input neuron **X** , one bias with the value 1 and one weight for each **w** , **b** respectively,we also have a function that adds all its inputs up and the result of that function is the output,essentially this neural network describes the function $y=wx+b$,which is the equation of a line.
 this is called a linear unit.
 a linear unit can have multiple inputs as well
 <p align="center">
@@ -366,7 +389,7 @@ a linear unit can have multiple inputs as well
 </p>
 <p>
 the formula for this neural network would be 
-<code>y=w<sub>0</sub>x<sub>0</sub>+w<sub>1</sub>x<sub>1</sub>+w<sub>2</sub>x<sub>2</sub>+b</code>
+$y=w_0x_0+w_1x_1+w_2x_2+b$
 </p>
 
 when we connect linear units together and give them a common set of input we get whats called a **Dense layer**,each layer in a neural network performs some kind of relatively simple transformation of the inputs and through a stack of those layers a neural network can transform its inputs in more complex ways.
@@ -387,9 +410,109 @@ a rectifier is a function that returns the input its received if its greater tha
 <p align="center">
 <img src="./assets/images/Relu.png" />
 <p style="font-size:1.5em" align="center">
-in this case `y=max(wx+b,0)`
+in this case $y=\max(wx+b,0)$
 </p>
 </p>
 using layers with activiation functions such as this allows us to capture complex relationships in the data,sometimes we will also need activation functions to normalize and transform the data for other purposes,for example turn something into a probability for classification problems
 
 ### How do neural networks learn?
+Just like any machine learning method we need a set of training data,training the neural network makes use of the features in the training data along with the expected target(the output).
+when we train the neural network we adjust the weights of each neuron in a way that gets the predicted value as close as possible to the true target value.  
+in addition to the training data we make use of two more things to achieve that:
+
+- a **Loss Function**
+- an **Optimizer**
+
+#### Loss Function
+after we've designed an architecture for the network we need to tell our network what problem it needs to solve.
+for that we use the **Loss Function**  
+the loss function measures how different our prediction is from the target's true value.
+different problems often require different loss functions,
+for example for regression tasks such as predicting the price of a house we often use the **MAE** function of Mean Absolute Error which is given by `Abs(y_true-y_pred)`
+however for tasks like classification we would use a function such as **cross-entropy**
+#### Optimizer
+After the model knows what problem it needs to solve and how close it is to solving it,we need to tell it *how* to solve it.
+for that we use the optimizer,the optimizer is algorithm that tells the model how it needs to modify its weights in order to make the loss smaller.  
+Virtually all of the optimization algorithms used in deep learning belong to a family called stochastic gradient descent. They are iterative algorithms that train a network in steps. One step of training goes like this:  
+
+1. Sample Training data of some size(called batch_size)
+
+2. Measure the loss between the prediction and the true values for each data point in the batch. this is called **forward-propagation**  
+
+3. Adjust the weights in a direction that makes the loss smaller. the calculation of that is called **backpropagation**  
+
+this process repeats until the loss is as small as we like it to be or until it stops decreasing.
+
+![fitted line example](./assets/images/fitted-line.gif)
+
+this animation describes the fitting of some linear model(identical to the one talked about in [linear unit](#the-linear-unit)) where we choose some batch of the data and calculate the loss (probably the sum/mean distance of the points from the line),we then adjust the weights **w** and **b** in a way that reduces that loss function,
+we see that after enough iterations and batches the loss function stops decreasing and the weights stabilize at a certain value
+
+
+##### but why does it only move a small step in the direction?
+from the animation you can notice it only shifts slightly every iteration instead of going all the way,this is determined by a hyperparameter called the learning rate,sometimes also called the alpha,the alpha is used to regulate the step size,too large of a step and we could miss some optimal values,on the other hand if the alpha is too small the algorithms may take a long time to converge to a certain value.
+
+##### the math behind SGD
+after the calculation of loss in forward propagation we use the gradient of that loss to calculate the step size for each weight we adjust,specficially we use the partial deriviative of the loss function along the weight.
+we calculate it using  
+$$W_{new}=W_{old}-\alpha*\frac{\partial L}{\partial W} $$
+
+where ${\alpha}$
+is the learning rate or the size of the step  
+$W_{new}$ is the new value for the weight after a single step  
+$W_{old}$ is the weight value before the step  
+$\frac{\partial L}{\partial W}$ is the gradient along the weight axis
+
+### Other Layers
+there are many more layers other than dense layers,for example Dropout and batch normalization layers:
+
+#### Dropout
+whenever a model learns about patterns specific to the training set it causes overfitting and decreases model accuracy on the validation set,usually these specific patterns arent very robust and removing a fraction of the neurons used to capture that pattern completely removes it.
+however broader,more general patterns have more robust weight patterns and are not affect as much by the removal of some neurons.
+For the removal we use something called a dropout layer.  
+as the name suggests we *Drop* some of the layer's inputs for every step of the training process,this makes it harder for the model to learn patterns specific to the training set and overfit.
+
+<p align="center">
+<img src="./assets/images/dropout.gif" />
+<p style="font-size:1em" align="center">50% Dropout applied</p>
+</p>
+
+#### Batch normalization
+With neural networks, it's generally a good idea to put all of your data on a common scale and *Normalize* it.  
+The reason is that SGD will shift the network weights in proportion to how large an activation the data produces. Features that tend to produce activations of very different sizes can make for unstable training behavior.
+while its a good idea to normalize data before giving it to the neural network its an even better idea to normalize it inside the network as well,for that we use the Batch Normalization Layer 
+
+### Classification
+Classification of data into classes is a common machine learning problem,it is a supervised learning problem where the model learns from labeled training data to make predictions about the class labels of new unseen data.  
+Binary classification means classification into two categories such as `Yes` and `No` or `Cat` and `Dog` etc.  
+we will call one class 0 and the other 1
+#### Accuracy and Cross-Entropy
+Accuracy is the way we measure how good our model is at classifying new data,it is defined as the ration of successful classifications to total predictions:
+$accuracy= \frac{NumberCorrect}{Total}$ , so a perfect model would have an accuracy score of 1.0  
+the problem with accuracy is that it cant be used as a loss function with SGD,reason being is that accuracy doesnt change smoothly,it is a ratio of counts and therefore changes in "jumps",it is not continious  
+as a substitute to accuracy we use something called the **cross-entropy** function
+##### Cross entropy
+While loss functions such as MAE measure distance between predictions, Cross entropy measures distance between probabilities, The closer the predicted probabilities align with the true probabilities, the lower the cross-entropy loss.  
+when we talk about binary classification we expect the cross-entorpy loss to be high when the predicted value is close to 0 and the true value is 1 and vice versa  
+the formula to calculate binary cross entropy is given by:  
+$$H= \frac{-1}{N}*\sum_{i=0}^{N} {t(\ln y_i)-(1-t)(ln (1-y_i))}$$
+
+since $\ln1=0$ and $\ln0\rightarrow\infty$
+when the true value is 0 it is equal to $\ln (1-y_i)$,if y_i is close to 0 the value is $\ln1=0$ and the loss is also close to 0, if y_i is close to 1 then value is $\ln0\rightarrow\infty$, meaning the loss is very large,the same principal applies when the true value is 1,this way we get a measure of how far our classification is from the true one
+#### Sigmoid function
+to make our model output probabilties instead of some arbitrary number we can use a sigmoid function,sigmoid is given by:  
+$$\sigma(x)=\frac{1}{1+e^{-x}}$$  
+basically its a function that for every X gives us a value between 0 and 1.
+and it looks like this:
+<p align="center">
+<img src="./assets/images/sigmoid.png" />
+</p>
+
+it is important to note,the closer the values are to 0 the more "sensitive" sigmoid is,for example the difference between $\sigma(-1)$ and $\sigma(1)$ is much larger than $\sigma(50)$ and $\sigma(60)$ 
+
+
+### Convolutional Neural Networks
+
+<scripts>
+
+</scripts>
