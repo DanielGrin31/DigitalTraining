@@ -31,6 +31,11 @@
 		- [Persistent Disks](#persistent-disks)
 		- [GCP SQL Databases](#gcp-sql-databases)
 		- [GCP NoSQL Databases](#gcp-nosql-databases)
+	4. [GCP Networking Services](#gcp-networking-services)
+		- [Virtual Private Cloud](#virtual-privae-cloud)
+		- [Firewall Rules](#firewall-rules)
+		- [Routes](#routes)
+		- [Load Balancing](#load-balancing)
 
 ## Cloud Computing
 
@@ -104,7 +109,7 @@ also known as serverless computing,cloud computing service model where users can
 **For example: Google Cloud Functions, AWS Lambda**  
 
 This means writing code to be executed as functions based on some event like http request or writing to a database etc.  
-this is different from paas because you dont need to worry about deployment or application architecture and only about small functions that are executed based on events.  
+this is different from paas because you dont need to worry about deployment or the underlying infrastructure and only about small functions that are executed based on events.  
 #### Saas
 cloud computing service model where users can access and use software applications over the internet on a subscription basis. The software is centrally hosted and maintained by the cloud provider, who manages the underlying infrastructure, including servers, databases, and application updates. Users can access the software through web browsers or thin clients, eliminating the need for local installation and management.
 **For example: Gmail, DropBox**  
@@ -268,3 +273,22 @@ A flexible NoSQL document database that offers real-time synchronization and aut
 
 ##### Memorystore
 This fully managed in-memory data store is all about speed and low-latency access. It is based on an in-memory key-value store infrastructure using Redis, providing fast access to key-value pairs. Memorystore handles replication, scaling, and high availability of Redis.
+
+### GCP Networking Services
+
+#### Virtual Private Cloud
+Virtual Private Cloud or VPC is a virtualized network within google cloud,it is a core networking service and is a global resource meaning it spans across all the different regions available in GCP.
+each VPC contains a default network and additional networks can be created in a project but networks cant be shared between projects.
+
+#### Firewall Rules
+Firewall rules segments your networks with a global distributive firewall to restrict access to resources,it governs traffic coming into instances on a network.
+each default network has a default set of firewall rules that have already been established.
+you can also create your own rules and set the accordingly.
+#### Routes
+Routes specify how traffic should be routed within your VPC network.
+in other words routes controls how packets leaving an instance should be directed.
+#### Load Balancing
+
+
+
+
