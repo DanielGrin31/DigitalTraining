@@ -17,7 +17,8 @@
 		- [Saas](#saas)
 - [Storage](#storage)
 	1. [Object Storage](#object-storage)
-	2. [Object Storage](#object-storage)
+	2. [File Storage](#file-storage)
+	3. [Block Storage](#block-storage)
 - [Google Cloud Platform](#google-cloud-platform)
 	1. [GCP Global Infrastructure](#gcp-global-infrastructure)
 	2. [GCP Compute Services](#gcp-compute-services)
@@ -36,7 +37,11 @@
 		- [Firewall Rules](#firewall-rules)
 		- [Routes](#routes)
 		- [Load Balancing](#load-balancing)
-
+		- [Google Cloud DNS](#google-cloud-dns)
+		- [Cloud VPN](#cloud-vpn)
+		- [Direct Interconnect](#direct-interconnect)
+	5. [Google Resource Hierarchy](#google-resource-hierarchy)
+	6. [Google Cloud IAM](#google-cloud-iam)
 ## Cloud Computing
 
 ### What is Cloud computing? 
@@ -194,6 +199,18 @@ The ability to manage multiple instances is provided using **Instance Groups**,i
 For storage you can attach and detach disks as needed as well as use **Google Cloud Storage** as another storage option.
 
 connection to the google compute engine VMs is granted through SSH
+#### Virtualization
+Virtualization is the process of creating a software-based representation or a simulation of a hardware resource such as an operating system, server, storage device, or network resource.  
+
+In the context of virtual machines virtualization means creating a machine with its on operating system,cpu cores and storage on top of an existing machine using something called a **hypervisor**.  
+
+A hypervisor's role is to allocate resources for a VM and to manage all system calls the VM executes,it exists between the os and the vm.
+there are 2 types of hypervisors:
+
+- The baremetal hypervisor runs directly on the hardware using hardware virtualization technologies such as Intel VT-X and is usually the more performant type.
+- The second type of hypervisor runs on top of an existing os and does not rely on hardware.
+
+
 #### GCP CAAS(Google Kubernetes Engine)  
 
 Google Kubernetes Engine or GKE is google cloud's container orchestration system for automation,deploying,scaling and managing containers.
@@ -276,19 +293,128 @@ This fully managed in-memory data store is all about speed and low-latency acces
 
 ### GCP Networking Services
 
-#### Virtual Private Cloud
-Virtual Private Cloud or VPC is a virtualized network within google cloud,it is a core networking service and is a global resource meaning it spans across all the different regions available in GCP.
-each VPC contains a default network and additional networks can be created in a project but networks cant be shared between projects.
+#### Virtual Private Cloud (VPC)
+VPC is a private network residing in the cloud that is specific to a project,all resources in the cloud belong to some VPC network,they allow you to isolate different resources and customize the enviornment for them.  
+VPC networks along with their associated routes and firewall rules are global resources,they are not associated with any particular region or zone.  
+
+Resources within a VPC network communicate with eachother using internal (private) IPv4 addresses **regardless of region or zone**, however they must be in the same VPC network to communicate internally ,otherwise they need to use VPC Peering or use the public internet to communicate.  
+
+![cross region vpc](./assets/images/cross_region_vpc.png)
+
+each project in GCP has its default VPC network which is an auto-mode VPC with predefined subnets in which a subnet is allocated for each region with no overlapping CIDR blocks.
+It is only possible to access resources from outside the VPC network if they have external ip addresses,those can be static(constant) or ephemeral(dynamic and can change). 
+
+There are two types of VPC Networks:  
+
+- **Auto Mode:** An auto mode network has automatically create subnets for each region using predefined subnet ranges with a 20 CIDR Block.   
+- **Custom Mode:** A custom mode network does not automatically create subnets,instead you have complete control over the subnets and ip ranges.
+
+> **Auto mode networks can be converted to custom mode networks however this operation is one-way!**
+
+##### VPC Subnets
+Short for sub-networks,subnets are a partition of ip addresses within a network,each subnet is associated with a region.
+subnets must not overlap eachothers CIDR Blocks and they must all be of the same ip range.
+for example you cant have 1 subnet as `192.168.0.x` and another such as `10.0.0.x`
+>**it is important to note VPC Networks themselves dont have any ip-ranges associated with them,ip-ranges are defined for the subnets**
+
+There are multiple reserved IP Addresses within a subnet.
+
+- The first address is reserved for the network
+- The second address is reserved for the default gateway and allows internet access
+- The second to last address is reserved for google cloud future use. 
+- The last address is reserved for broadcast.
+##### Private Google Access
+This is a feature that allows resources within VPCs to access google APIs and services using internal IP Addresses,traffic is never sent over public internet and it uses google's infrastructure.
+
+![](./assets/images/private_google_access.png)
+
+##### VPC Network Peering
+Usually when two instances from two different vpc networks need to communicate they would need to do so through public internet,however to communicate using internal ips(privately) between VPCs GCP offers a service called VPC Peering.  
+VPC peering enables you to have private connectivity across 2 vpc networks traffic stays inside the google infrastructure and does not go over public internet.  
+This reduces network latency,improves network security and saves on costs.  
+Routes firewall and vpns are applied separately on each VPC network independently,peering becomes active when the connection between both sides is configured correctly.  
+in addition transitive peering is not enabled,networks must be peered directly to communicate.
+![](./assets/images/vpc_peering.png)
 
 #### Firewall Rules
-Firewall rules segments your networks with a global distributive firewall to restrict access to resources,it governs traffic coming into instances on a network.
-each default network has a default set of firewall rules that have already been established.
-you can also create your own rules and set the accordingly.
+Firewall rules is a service used to filter incoming and outgoing network traffic based on a set of user-defined rules.
+Firewall rules are applied for each network,these can be either for incoming or outgoing traffic but not both at the same time.
+all incoming traffic is blocked by default and all outgoing traffic is allowed by default and you have to explicitely specify the traffic you want to allow or deny using multiple components within the rules.
+For default networks there are default firewall rules that allow for ICMP SSH RDP traffic from anywhere 
+The components a firewall rule consists of are: protocol,ports, sources,destinations and target.
+![](./assets/images/firewall_rules.png)
+
+
 #### Routes
-Routes specify how traffic should be routed within your VPC network.
-in other words routes controls how packets leaving an instance should be directed.
+Google Cloud Routes define the paths that traffic takes from a VM instance to other destinations,these destinations can be in the same VPC network or outside it.
+routes essentially consist of a **single destination(CIDR)** and a **single next hop**
+when a VM in gcp sends a packet,gcp delivers that packet to the next hop address if the destination address of the packet is within the single destination address range
+all routes are stored in the routing table for the VPC.
+
+
 #### Load Balancing
+GCP offers two types of load balancing:
+
+- **HTTP(S) Load Balancing:** This type of load balancing provides global scalability and load distribution across multiple regions or even within a single region using a single global IP. It ensures that traffic is routed to the nearest region and can also redirect traffic to a healthy instance in the next closest region in case of failure or excessive load.
+
+- **Network Load Balancing:** Network load balancing operates within a single region and supports load balancing for any port. It distributes traffic among server instances in the same region based on incoming IP protocol data, such as the address, port, and protocol.
+
+#### Google Cloud DNS
+Google Cloud DNS is a highly available and low-latency DNS (Domain Name System) service provided by GCP. With Cloud DNS, you can publish and manage DNS records using the same reliable infrastructure that Google uses. It allows you to modify, create, and delete DNS records using the command-line interface (CLI), software development kits (SDKs), and the GCP console.
+
+#### Cloud VPN
+Cloud VPN enables you to establish a secure connection between your existing network (on-premises or in another location) and your VPC network in GCP. It utilizes an IPSec connection to encrypt traffic, ensuring secure communication over the public internet.
+
+#### Direct Interconnect
+Direct Interconnect is a connectivity option that enables you to connect your existing network to your VPC network using a highly available, low-latency connection. Unlike Cloud VPN, Direct Interconnect does not rely on the public internet infrastructure. Instead, it leverages Google's own infrastructure to establish a dedicated and private connection, ensuring reliable and fast communication between your networks.
+
+### Google Resource Hierarchy
+A resource can refer to the service-level resource that can process your workloads such as: Compute Engine VMs,Cloud Storage Buckets and Cloud SQL Databases.
+a resource can also refer to the account-level resource that sits above the service-level resource such as the organization itself,the folders and the projects.  
+The resource hierarchy is google's way to configure and grant access to various cloud resources both at the service level and at the account level.  
+
+Google Cloud Resources are organized hierarchically using a parent/child relationship,it is designed to map organizational structure to google cloud and to to manage access control and permissions for groups of related resources
+
+
+![google cloud resource hierarchy](./assets/images/GCP_resource_hierarchy.png)
+
+The accessibility of these resources or policies is managed by the IAM(Identity and Access Management),when IAM policy is set on a parent the child will inherit this policy.  
+
+- **Domain(Cloud level):** The domain is the primary identity of the organization for example: foo.com, this is where you manage your users,policies etc. for your organizations,and these are linked to G Suite or cloud identity accounts
+
+- **Organization(Root Node):** it is associated with one domain,and all entities or resources are grouped under the organization,all policies applied to an organization are inherited to all resources and entities underneath it.
+When an organization is created an organization admin role is created as well,this is to allow full access to edit any or all resources.
+
+- **Folders:**this is an additional grouping mechanism and isolation boundary between each project,its a grouping of other projects and folders.
+
+- **Projects:**this is a core organizational component of google cloud as projects are required to use service-level resource such as VMs or Storage Buckets,these projects are the base level organizing entity in GCP and parent all service level resources.
+any given resource can only exist in one project and not multiple projects at the same time.
+
+- **Resources:** this is any service level resource created in google cloud,everything from Compute Engine instances to Storage buckets,SQL Databases,APIs.
 
 
 
+### Google Cloud IAM
 
+#### Principle of least privilege
+this principle states that a user,program or process should have only the bare minimum privileges necessary to perform its function.
+this means if i want to give someone permissions to create storage buckets,they should only have the permission to create one storage bucket,they dont need read edit or delete permissions on cloud storage buckets.
+
+![least privelege example](./assets/images/least_privelege_example.png)
+ 
+ By following the principle of least privilege, you reduce the attack surface and minimize the potential impact of accidental or malicious actions. It helps ensure that users and processes have access only to the resources they genuinely need, reducing the risk of unauthorized access, data breaches, or unintended changes to critical systems.
+
+
+#### What Is IAM?
+
+Cloud IAM or Identity and Access Management lets you manage access control by defining who(identity),has what access(Role),for which resource.  
+in IAM permission to access a resource isnt granted directly to the end user,instead permissions are grouped into roles and roles are then granted to authenticated members,an IAM policy defines and enforces what roles are granted to which members and this policy is attached to a resource.  
+So when an authenticated member attempts to access a resource IAM checks the resource's policy to check wether the action is permitted.
+
+#### The Policy Architecture
+![](./assets/images/iam_policy.png)
+
+
+
+#### Service Accounts
+#### Cloud Identity
