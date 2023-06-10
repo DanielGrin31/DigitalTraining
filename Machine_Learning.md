@@ -1,5 +1,4 @@
-
-# First week summary:
+# Machine Learning Summary:
 
 ## Table of contents
 - [Machine learning](#machine-learning)

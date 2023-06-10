@@ -1,4 +1,4 @@
-# Second week summary:
+﻿# Cloud Summary:
 
 ## Table of contents
 
@@ -15,10 +15,19 @@
 		- [Paas](#paas)
 		- [Faas](#faas)
 		- [Saas](#saas)
+- [Virtualization](#virtualization)
+- [Containers And Kubernetes](#containers-and-kubernetes)
+	1. [What Are Containers?](#what-are-containers)
+	2. [Container Engines](#container-engines)
+	3. [Docker](#docker)
+	4. [Kubernetes](#kubernetes)
 - [Storage](#storage)
 	1. [Object Storage](#object-storage)
 	2. [File Storage](#file-storage)
 	3. [Block Storage](#block-storage)
+- [Databases](#databases)
+	1. [SQL VS NoSQL](#sql-vs-nosql)
+	2. 
 - [Google Cloud Platform](#google-cloud-platform)
 	1. [GCP Global Infrastructure](#gcp-global-infrastructure)
 	2. [GCP Compute Services](#gcp-compute-services)
@@ -33,21 +42,45 @@
 		- [GCP SQL Databases](#gcp-sql-databases)
 		- [GCP NoSQL Databases](#gcp-nosql-databases)
 	4. [GCP Networking Services](#gcp-networking-services)
-		- [Virtual Private Cloud](#virtual-privae-cloud)
+		- [Virtual Private Cloud](#virtual-private-cloud-vpc)
 		- [Firewall Rules](#firewall-rules)
 		- [Routes](#routes)
 		- [Load Balancing](#load-balancing)
 		- [Google Cloud DNS](#google-cloud-dns)
+		- [Cloud CDN](#cloud-cdn)
 		- [Cloud VPN](#cloud-vpn)
 		- [Direct Interconnect](#direct-interconnect)
 	5. [Google Resource Hierarchy](#google-resource-hierarchy)
 	6. [Google Cloud IAM](#google-cloud-iam)
+		- [Principle Of Least Privilege](#principle-of-least-privilege)
+		- [What Is IAM?](#what-is-iam)
+		- [The Policy Architecture](#the-policy-architecture)
+		- [Service Accounts](#service-accounts)
+		- [Cloud Identity](#cloud-identity)
+	7. [Big Data Services](#big-data-services)
+		- [Big Query](#big-query)
+	8. [Messaging Services](#messaging-services)
+		- [GCP Pub/Sub](#gcp-pubsub)
+- [Amazon Web Services](#amazon-web-services)
+	1. [AWS Global Infrastructure](#aws-global-infrastructure)
+	2. [AWS Compute Services](#aws-compute-services)
+		- [AWS IAAS(EC2)](#aws-iaas-ec2)
+		- [AWS CAAS(ECS)](#aws-caas)
+		- [AWS PAAS(Elastic Beanstalk)](#aws-paas)
+		- [AWS FAAS(Lamba+Fargate)](#aws-faaslambdafargate)
+	3. [AWS Database And Storage Services](#aws-database-and-storage-services)
+		- [AWS NoSQL Databases](#aws-nosql-databases)
+		- [AWS SQL Databases](#aws-sql-databases)
+	4. [AWS Networking Services](#aws-networking-services)
+	5. [AWS IAM](#aws-iam)
+	6. [AWS Big Data Services](#aws-big-data-services)
+	7. [AWS Messaging Services](#aws-messaging-services)
 ## Cloud Computing
 
 ### What is Cloud computing? 
 **Cloud Computing is the delivery of a shared pool of different computing services over the internet to process,store and network data.**  
 It allows users to access and use computing resources such as virtual 	machines,storage,databases,software applications and networking capabilities.  
-it does all of that without the need for on-premises datacenteres or direct management,all of the hardware is owned by someone else called the **Cloud Service Provider (CSP)**.  
+it does all of that without the need for on-premises datacenters or direct management,all of the hardware is owned by someone else called the **Cloud Service Provider (CSP)**.  
 The resources are shared among many users and to not affect each other cloud providers use isolation techniques and allocation of resources based on demand,this provides mitigation of performance impact and security.
 
 ### Why do we need it?
@@ -69,6 +102,7 @@ it is also possible to scale automatically according to load or demand,that abil
 
 Computing services offered by 3rd party providers over the public internet,making them available to anyone who wants to purchase and use them.    
 Public clouds can be connected together and used within a single enviornment,that is called **Multi-Cloud**.  
+
 Public clouds are a good choice for companies and organizations with low-security concerns.  
 There is no need to manage these resources as cloud computing providers configure and manage these services.  
  Generally, public clouds are used for application development and testing.   
@@ -120,6 +154,83 @@ cloud computing service model where users can access and use software applicatio
 **For example: Gmail, DropBox**  
 
 This means using third party software hosted on a cloud and not having to worry about anything except some minimal configuration
+## Virtualization
+Virtualization is the process of creating a software-based representation or a simulation of a hardware resource such as an operating system, server, storage device, or network resource.  
+
+In the context of virtual machines virtualization means creating a machine with its on operating system,cpu cores and storage on top of an existing machine using something called a **hypervisor**.  
+
+A hypervisor's role is to allocate resources for a VM and to manage all system calls the VM executes,it exists between the os and the vm.
+there are 2 types of hypervisors:
+
+- The baremetal hypervisor runs directly on the hardware using hardware virtualization technologies such as Intel VT-X and is usually the more performant type.
+- The second type of hypervisor runs on top of an existing os and does not rely on hardware.
+
+## Containers And Kubernetes
+
+### What Are Containers?
+Containers are lightweight and isolated enviornments that package an application's code along with its dependencies and configuration,this allows for portability and consistency across different machines.
+they provide a level of abstraction that ensures the application runs in a self-contained and its easiy to produce multiple instances of the application.
+
+![](./assets/images/containers.png)
+### Container Engines
+Container Engines are installed on top of the OS and run the container instances on the same operating system kernel.
+> This is from the user's perspective at least, in actuality there is a OCI compliant runtime like runc that runs the containers themselves.
+
+This allows each container to consume very little memory or disk utilization
+### Docker
+Docker is the most popular container platform used to manage the containers running on the host,create containers from images and docker files.
+#### Dockerfile
+It uses a dockerfile to specify what kind of software the container will run,the operating system,what ports it will expose and more.
+it is a set of instruction specifying how a docker image will be built.
+```
+FROM node:18-alpine
+WORKDIR /app
+COPY . .
+RUN yarn install --production
+CMD ["node", "src/index.js"]
+EXPOSE 3000
+```
+#### Docker Image
+a docker image has multiple layers and it is used to create docker instances,it serves as a blueprint or template from which Docker instances, also known as containers, are created. 
+without the top layer which allows for a filesystem and a read-write access,this layer allows for modifications and data storage specific to that instance.
+these images can be stored on a machine or more often in an image registry such as **Docker Registry**
+![](./assets/images/docker_image.png)
+
+### Kubernetes
+Kubernetes is an orchestration platform for containers,it is open source and was invented by google.
+Kubernetes enables you to automate,schedule and run containers across nodes which can be physical or virtual machines,simplyifing the creation and scaling of containerized applications.
+Kubernetes works to ensure there is minimal downtime as defined by user configuration.
+
+> this means if you define that there should be 3 instances of an application running at all time if one instance fails kubernetes will automatically recreate the container.
+
+it also provides load balancing across containers and service discovery.
+The smallest deployable Unit in kubernetes is a **Pod** and a single pod can contain one or more containers,it is generally recommended to have one pod per container.
+
+A kubernetes cluster consists of a single **Control Plane** and one or more **Nodes**.
+
+The control plane is responsible for the coordination of the entire cluster,including: scheduling workloads such as containerized applications,managing the workload's lifecycle,scaling and upgrades.
+
+The control plane also manages network and storage resources for the workloads within the cluster.
+The main role of the Control Plane is to make sure the cluster is at the desired state.
+
+Nodes are the worker machines inside the cluster that run the containerized applications,those can be virtual machines as well physical ones.
+A node runs the services necessary that support the docker containers that run the application such as the docker runtime as well as the kubernetes node agent called the **kubelet**
+
+The control plane consists of multiple components:
+
+- **API Server:** it is the point in which a user can interact with the cluster and it is accessed through HTTP requests or GRPC as well as the CLI tool called **kubectl**
+- **Kube Scheduler:** it discovers and assign newly created pods to a Node server to run them,taking into consideration any constraints
+- **Kube Controller Manager:** it runs all controller processes such as noticing when nodes go down,maintaining the correct number of pods and more. it is the service that makes changes to the cluster when the current state does not match the desired state
+- **ETCD:** it is a key-value store containing all configuration data including what nodes are part of the cluster and what pods they are running
+
+The components of the Nodes include:
+
+- **Kubelet:** it is an agent that runs within each node in the cluster and it communicates with the control plane,it is responsible for starting and running docker containers scheduled on that node
+- **Kube-Proxy:** it maintains network connectivity to the pods in the cluster
+- **Container-Runtime:** the software responsible for running the containers
+
+![google cloud kubernetes](./assets/images/gcp_kubernetes.png)
+
 
 ## Storage
 
@@ -138,14 +249,55 @@ Block storage systems divide storage space into fixed-size blocks or chunks. The
 
 When accessing data from block storage, the system retrieves the specific blocks that contain the desired data. This direct access allows for faster retrieval and modification of data compared to other storage types. Block storage is commonly used for structured data, such as databases, where the data is divided into smaller chunks for efficient management and processing.
 
-
-
-
-
 > **In simple terms object storage is the same as putting your data into a box,writing a number on the box and some information about yourself,infomration about the data and what it is used for and then putting that box onto a shelf(bucket).  
 the box size is irrelevent cause the shelf can hold any size of box and grow when needed.**  
 
 > **block storage would be dividing the shelf into equal units of storage,such as 1 meter segments and then filling that 1 meter with as many boxes as you can fit,once you reach the limit you use the next segment,if a box is too large you use multiple segments for one box**
+
+## Databases
+### NoSQL Databases
+#### Document Databases
+these databases are made of collections containing documents.
+each document is in a json-like format and there is a no predefined schema.
+Documents of the same type are grouped in the collection.
+
+for example for an ecommerce website there may be a collection named products,and in the collection there are different documents describing products.
+
+each document could have fields such as "name," "price," "description," and "category." The values for these fields would be specific to each product.
+```json
+{
+ "name":"product1",
+ "price":30
+ "category":"cat1"
+ "description":"best product ever"
+}
+```
+#### Wide-Column Databases
+#### Key-Value Databases
+Keyvalue databases are usually fast and use a simple `key:value` method to store data.
+however they usually lack features like relationships,indexes and aggregation.
+It is schemaless meaning it does not need to have a consistent structure for the values.
+#### Graph Databases
+
+### SQL VS NoSQL
+NoSQL stands for Not Only SQL and refers to databases that do not use the traditional SQL Data model with traditional rows and columns.
+There are multiple NoSQL Database models,each with their own benefits and use cases:
+
+- **Document:** general purpose
+- **Key-Value:** large amounts of data with simple lookup queries
+- **Wide-Column:** large amounts of data with predictable query patterns
+- **Graph:** analyzing and traversing relationships between connected data
+
+NoSQL databases are designed to scale horizontally as well as vertically contrary to traditional SQL where the scaling is only vertical. 
+
+In NoSQL databases queries can be much faster,that is due to the fact that it does not require join operations from multiple tables and data that is accessed together is usually stored together as well.
+
+However NoSQL does have its drawbacks and considerations:
+
+- **ACID Support:** a common drawback of NoSQL Databases is that they dont support ACID transactions across documents,ACID transactions means that the databases ensures data consistency and durability with any operations.
+- **Database Size:** NoSQL databases tend to be larger since they werent designed to minimize duplicates of data like traditional SQL
+- **Specialized Databases:** NoSQL Databases can be very good for specific usecases however they may not be the optimal solution for other ones. this means an application may need additional databases.
+
 ## Google Cloud Platform
 Google Cloud Platform or GCP is a collection of cloud computing services provided by google that offers a variety of different infrastracture and platforms to build,deploy and scale applications and services in the cloud.    
 
@@ -199,22 +351,46 @@ The ability to manage multiple instances is provided using **Instance Groups**,i
 For storage you can attach and detach disks as needed as well as use **Google Cloud Storage** as another storage option.
 
 connection to the google compute engine VMs is granted through SSH
-#### Virtualization
-Virtualization is the process of creating a software-based representation or a simulation of a hardware resource such as an operating system, server, storage device, or network resource.  
+##### Instance Groups
+Instance groups allow you to create a group of identical servers,it is a collection of VM instances that you can manage as a single entity.
+These are great for stateless serving workloads such as website frontend,web servers and web apps,there is no saving of persistent data allowing for easy scaling.
+Instance groups allow for features such as auto-healing,high availability,load-balancing,auto-scaling and auto-updating.
 
-In the context of virtual machines virtualization means creating a machine with its on operating system,cpu cores and storage on top of an existing machine using something called a **hypervisor**.  
-
-A hypervisor's role is to allocate resources for a VM and to manage all system calls the VM executes,it exists between the os and the vm.
-there are 2 types of hypervisors:
-
-- The baremetal hypervisor runs directly on the hardware using hardware virtualization technologies such as Intel VT-X and is usually the more performant type.
-- The second type of hypervisor runs on top of an existing os and does not rely on hardware.
 
 
 #### GCP CAAS(Google Kubernetes Engine)  
 
 Google Kubernetes Engine or GKE is google cloud's container orchestration system for automation,deploying,scaling and managing containers.
-It uses Compute Engine Instances (VMS) as **Nodes** in a **Cluster**
+It uses Compute Engine Instances (VMS) as **Nodes** and a **Control Plane** in a **Cluster**.
+
+In addition to all the usual Kubernetes services running on the control plane there is also the **Cloud Controller Manager**.
+It embeds cloud specific control logic,it lets you link your cluster into any cloud provider's api.
+
+GKE Manages all control plane components for you and exposes an API to interact with the cluster,it automates the launching of compute engine instances as nodes
+
+In GKE a **Node Pool** refers to a group of nodes within a cluster with the same configuration,custom node pools are useful when you need to create pods that require additonal resources.
+
+##### Kubernetes objects
+These objects are persistent and are used to specify the state of a cluster,for example what containerized applications are running and on which nodes.
+An object describes a declared intent and kubernetes will work to ensure the cluster's state matches the objects declared in it.
+```yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx
+spec:
+  containers:
+  - name: nginx
+    image: nginx:1.14.2
+    ports:
+    - containerPort: 80
+```
+to create pods we use a template as can be seen above and a workload object(such as deployment) which describes how many pods of a given template should be running at any given point in time
+##### Networking
+For networking traffic and load-balancing it between pods kubernetes relies on **Services**,these are logical groupings of pods using the tags specified in the pod object file.
+there are many strategies for routing traffic based on services,these include: ClusterIP,NodePort,LoadBalancer and more.
+
+**Ingress** is used to route HTTP/S traffic to applications running within a cluster,it is associated with one or more service objects,when you create an ingress controller GKE automatically create an HTTP/S load balancer and configures it according to the configuration of the ingress and its associated services.
 
 #### GCP PAAS(App Engine)
 App Engine is a fully managed serverless platform for developing and hosting web applications at scale.
@@ -227,9 +403,10 @@ it allows interaction with other google services such as Google Cloud Storage se
 #### GCP FAAS(Cloud Functions + Cloud Run)
 
 ##### Cloud Functions
-it is a Serverless Execution Enviornment for build and connecting cloud services,you use simple single-purpose functions that are attached to events which are produced from your infrastructure and services in google cloud.  
+it is a Serverless Execution Enviornment for building and connecting cloud services,you use simple single-purpose functions that are attached to events which are produced from your infrastructure and services in google cloud.  
 A function is trigged when an event being watched is fired.
-Your code then executes in a fully managed enviornment.
+Your code then executes in a fully managed enviornment and can scale automatically.
+The difference between App engine and Cloud Functions is that you dont need to worry about the structure of the application,GCP takes care of calling the functions once the triggers are specified
 
 ##### Cloud Run
 it is a Fully managed compute platform for deploying and scaling containerized applications quickly and securly.
@@ -243,24 +420,37 @@ Cloud Run is usually more Suitable for larger applications packaged in container
 
 #### Cloud Storage
 
-Cloud storage is a scalable and durable object storage service.
+Cloud storage is a scalable and durable **object storage** service.
 It allows you to store and retrieve any amount of data, such as files, images, videos, backups, or logs, in a secure and highly available manner.  
-
 Durability means it is very unlikely to lose files.
 It has unlimited storage with no minimum object size.  
 
-You can freely use cloud storage and its use cases are content delivery,data lakes and backup.  
-It is available in different storage classes:  
+You can freely use cloud storage and its use cases are content delivery,data lakes and backup.
 
-- Standard: offers the maximum availability with your data with no limitations,good for storage that is frequently accessed
-- Nearline: offers lower cost archival storage for files accessed less than once a month.
-- Coldline: offers an even lower cost archival storage for files accessed less than once every 3 months.
-- Archive: offers the lowest cost archival storage for files accessed less than once every year.
+##### Access
+Access to the storage buckets is regulated and managed in multiple ways:
+
+- **IAM Policies:** policies applied on the resource that include roles with permissions which specify which users have access to what actions on the bucket
+- **Access Control List:** ACLs are used to provide more granular and specific control over storage buckets,they overlap with IAM Policies meaning if one of them only gives access to a single user and another gives public access,the storage bucket will have public access.
+- **Signed URLs:** allows users to access a storage bucket for a specific amount of time without the need for authentication,all actions made through the signed url will be made under a user account or a service account 
+
+##### Versions
+versioning is a feature within cloud storage that allows you to retain previous and deleted version of files,whenever you overwrite a file you keep both the new and old version of it which means you can restore it at any point and to delete a file you would need to delete all versions of it explicitely.
+this feature has the benefits of data protection however it can increase storage costs by a lot.
+
+buckets are available in different storage classes:  
+##### Storage Classes
+- **Standard:** offers the maximum availability with your data with no limitations,good for storage that is frequently accessed
+- **Nearline:** offers lower cost archival storage for files accessed less than once a month.
+- **Coldline:** offers an even lower cost archival storage for files accessed less than once every 3 months.
+- **Archive:** offers the lowest cost archival storage for files accessed less than once every year.
 
 It is also available for storage in multiple availability options such as region,dual region and multi-region.
 
 #### File Store
 A fully managed NFS file server,it is a managed network file service that operates at the file level, allowing you to create and manage file shares accessible by multiple instances.
+Use cases include:
+enterprise applications, content management systems, and development environments. It is ideal for applications that rely on traditional file system semantics and need consistent performance for file operations.
 
 #### Persistent Disks  
 Persistent disks offer durable block storage for instances,it comes in multiple options:  
@@ -268,25 +458,63 @@ Persistent disks offer durable block storage for instances,it comes in multiple 
 - Standard: gives you regular standard storage in a reasonable price
 - Solid State(SSD): gives you lower latency and higher iops  
 
-They are used to store data that needs to persist even after the associated virtual machine (VM) is terminated.
+They are independent and are used to store data that needs to persist even after the associated virtual machine (VM) is terminated.
+It is possible to auto-scale persistent disks using the resize feature.
 
+These disks are not physically attached to the Instance and instead are network storage devices connected over google's internal network.
+By default each Instance in Compute engine has a single boot persistent disk that contains the OS
+>**persistent disks are available both as regional and zonal resources**
 
+##### Local SSDs
+Local SSDs are storage devices physically attached to the host machine the Compute Engine instance is running on,providing minimal latency however the data only persists until the instance is stopped or deleted. 
 #### GCP SQL Databases
 
 ##### Cloud SQL
 Fully managed SQL database service, It supports MySQL, PostgreSQL, SQL Server, simplifying database setup, management, and scaling for traditional SQL-based workloads.  
+
+Cloud SQL provides vertical scalability, allowing you to scale up or down the resources (CPU, memory, storage) of an individual instance. It doesn't provide automatic horizontal scalability across multiple nodes or regions.
+however it is possible to set up replication and failover for Cloud SQL allowing for high-availability in read-operations.
 ##### Cloud Spanner  
 Cloud Spanner, is a globally distributed, scalable, strongly consistent relational database service. It handles large-scale, mission-critical applications, providing global replication, automatic scaling, ACID transactions, and SQL querying. Cloud Spanner is ideal for scenarios requiring high scalability.
+
+Cloud Spanner provides automatic horizontal scalability by distributing data across multiple nodes and regions.
 
 #### GCP NoSQL Databases 
 ##### Bigtable
 It's a highly scalable NoSQL database designed for handling large amounts of data and fast processing. It utilizes a wide-column NoSQL database infrastructure, based on Google's internal Bigtable system, which organizes data into columns for efficient storage and retrieval of massive datasets.
 
+| Row Key |    Column Family 1   |    Column Family 2    |
+|---------|----------------------|-----------------------|
+|   001   | Attribute 1: Value 1 | Attribute 3: Value 3  |
+|         | Attribute 2: Value 2 | Attribute 4: Value 4  |
+|---------|----------------------|-----------------------|
+|   002   | Attribute 1: Value 5 | Attribute 3: Value 6  |
+|         | Attribute 2: Value 7 | Attribute 5: Value 8  |
+|         |                      | Attribute 6: Value 9  |
+
+
 ##### Datastore
 This NoSQL database is great for rapid data updates and high query loads. It uses a hierarchical NoSQL database infrastructure, organizing data in a hierarchical structure similar to a tree, allowing for efficient querying and retrieval of data.
 
 ##### Firestore
-A flexible NoSQL document database that offers real-time synchronization and automatic scaling. It employs a document-based NoSQL database infrastructure, storing data in flexible, semi-structured documents, usually in JSON-like format, enabling efficient querying, indexing, and syncing across multiple devices or platforms.
+Firestore is an improvement on datastore.
+Its a flexible NoSQL document database that offers real-time synchronization and automatic scaling. It employs a document-based NoSQL database infrastructure, storing data in flexible, semi-structured documents, usually in JSON-like format, enabling efficient querying, indexing, and syncing across multiple devices or platforms.
+
+Firestore provides enhanced scalability, real-time updates, more advanced querying capabilities, and is the recommended choice for new projects. Datastore is still supported but lacks some of the newer features and improvements found in Firestore.
+
+an example for a firebase entry is:
+```json
+{
+  "id": "123456",
+  "name": "John Doe",
+  "email": "johndoe@example.com",
+  "position": "Software Engineer",
+  "department": "Engineering",
+  "salary": 75000,
+  "startDate": "2022-01-01",
+  "active": true
+}
+```
 
 ##### Memorystore
 This fully managed in-memory data store is all about speed and low-latency access. It is based on an in-memory key-value store infrastructure using Redis, providing fast access to key-value pairs. Memorystore handles replication, scaling, and high availability of Redis.
@@ -361,6 +589,8 @@ GCP offers two types of load balancing:
 
 #### Google Cloud DNS
 Google Cloud DNS is a highly available and low-latency DNS (Domain Name System) service provided by GCP. With Cloud DNS, you can publish and manage DNS records using the same reliable infrastructure that Google uses. It allows you to modify, create, and delete DNS records using the command-line interface (CLI), software development kits (SDKs), and the GCP console.
+#### Cloud CDN
+Cloud CDN caches content at Google's globally distributed points of presence (PoPs) located around the world. When a user requests content, Cloud CDN delivers it from the closest PoP, reducing the distance and network latency for faster delivery. It can accelerate the delivery of both dynamic and static content, including websites, videos, APIs, and other web assets.
 
 #### Cloud VPN
 Cloud VPN enables you to establish a secure connection between your existing network (on-premises or in another location) and your VPC network in GCP. It utilizes an IPSec connection to encrypt traffic, ensuring secure communication over the public internet.
@@ -385,9 +615,9 @@ The accessibility of these resources or policies is managed by the IAM(Identity 
 - **Organization(Root Node):** it is associated with one domain,and all entities or resources are grouped under the organization,all policies applied to an organization are inherited to all resources and entities underneath it.
 When an organization is created an organization admin role is created as well,this is to allow full access to edit any or all resources.
 
-- **Folders:**this is an additional grouping mechanism and isolation boundary between each project,its a grouping of other projects and folders.
+- **Folders:** this is an additional grouping mechanism and isolation boundary between each project,its a grouping of other projects and folders.
 
-- **Projects:**this is a core organizational component of google cloud as projects are required to use service-level resource such as VMs or Storage Buckets,these projects are the base level organizing entity in GCP and parent all service level resources.
+- **Projects:** this is a core organizational component of google cloud as projects are required to use service-level resource such as VMs or Storage Buckets,these projects are the base level organizing entity in GCP and parent all service level resources.
 any given resource can only exist in one project and not multiple projects at the same time.
 
 - **Resources:** this is any service level resource created in google cloud,everything from Compute Engine instances to Storage buckets,SQL Databases,APIs.
@@ -412,9 +642,136 @@ in IAM permission to access a resource isnt granted directly to the end user,ins
 So when an authenticated member attempts to access a resource IAM checks the resource's policy to check wether the action is permitted.
 
 #### The Policy Architecture
+A Policy is a list of entries that specify the permissions someone has for a resource,it is attached to either a service-level resource like a compute-engine instance or an account-level resource like an organization,folder or project where the policy is applied to all the service-level resources it contains.  
+
+Whenever an account tries to access a resource IAM checks the resource's policy to see if the account has the permissions to perform the specified action.  
+The policy consists of metadata,audit config and bindings,those bindings specify what *identities* have which *roles* for the resources the policy is applied on.
+
+A role is a list of permissions such as read access to storage buckets or ability to manage Compute Engine Instances.  
+An identity is an email address that can be associated with a google account,a group,a service account any more.  
+there are two special identities being allUsers,this means anonymous access,no need for authentication.  
+and authenticatedUsers,this refers to any users that authenticated with a google account.  
+
+In addition to roles it is also possible to specify conditions,those are used to have more control over permssions,for example only allowing the resource to be accessed at specific times or from a specific device
+
 ![](./assets/images/iam_policy.png)
 
-
-
 #### Service Accounts
+Service accounts can be both an identity and a resource,they are a special account used by an application or a Compute Engine Instance and not a person.  
+Applications use service accounts to authenticate against GCP Services in a way that does not require user interaction,it is the identity of the application.  
+
+IAM Policies are used to specify which services and resources the application can access.
+Like user accounts it is identified by an email address which is unique to the account.  
+
+It is also possible for a normal user to use a service account's permissions to execute an action given the correct roles,that is called **service account impersonation**.
+
 #### Cloud Identity
+Cloud Identity is google's Identity as a Service(IDAAS) offering,it provides a platform that manages users and groups,provides authentication and Single Sign On and ensures security using different features like Multi Factor Authentication(MFA).
+Single Sign On means the user only needs to authenticate once against GCP to access different services.
+Another important feature is Google Cloud Directory Sync which allows for synchronization between an LDAP server or Active Directory with google cloud identity.
+
+### Big Data Services
+Big data refers to massive amounts of data that would be too expensive to store manage and analyze using traditional database systems.
+Big data helps companies make better business decisions,gain more insight leading to increased revenue.
+A very common use case for big data is machine learning models.
+#### Big Query
+big query is a fully managed serverless data warehouse that enables scalable analysis over large amounts of data,it supports querying using SQL and holds built in machine learning capabilities.  
+
+it allows for data ingestion, transformation, and exporting of data.  
+It provides various data loading options, such as batch loading, streaming data in real-time, and integration with other Google Cloud services like Cloud Dataflow for complex data processing pipelines.  
+### Messaging Services
+#### GCP Pub/Sub
+Pub/Sub is a fully managed messaging service offered by GCP to allow sending and receiving messages between independent applications.  
+
+A publisher applications creates and send messages to a **topic**,any subscriber applications create a subscription to a topic and receives messages from it.  
+
+a published message is retained for a subscription on a message queue until it is acknowledged by a subscriber,whenever a subscriber receives a message(either by the topic publishing it or the subscription pulling it) it sends an acknowledgement to the pub/sub server removing the published message from the queue.  
+
+
+## Amazon Web Services
+
+### AWS Global Infrastructure
+The AWS Global Network consists of a global backbone network that interconnects AWS data centers worldwide. It includes a combination of privately-owned fiber-optic links, direct peering relationships with Internet Service Providers (ISPs), and partnerships with Content Delivery Networks (CDNs).
+
+AWS has more regions available for use than GCP and is spread across more locations.
+Additionally AWS supports local zones,those are different from availability zones(AZs). 
+these are designed to bring the core services needed for the latency sensitive portions of your workload closer to end-users, while Availability Zones provide access to the full array of AWS services.
+It is possible to further reduce latency utilizing wavelength zones,those are zones that you can deploy your resources to and they can be accessed using devices that support 5G.
+It is possible to access all AWS Services using the AWS Management Console(in the web), the CLI or the SDK.
+
+### AWS Compute Services
+
+#### AWS IAAS(EC2)
+Identical features to GCP Compute Engine but different names  
+EC2 has 3 levels of tenancy:
+
+- **dedicated host:** meaning you have access to the physical components of the instance and the host is the same host after every reboot until it is terminated
+- **dedicated instance:** meaning only have access to a virtualized instance but your instance still exists on the same host through reboots until it is terminated
+- **default:** your instance is virtualized and recreated in a new host after every reboot. 
+
+#### AWS CAAS
+EKS is almost identical to GKE  
+ECS which is the AWS Elastic Container Service does not use kubernetes and is also worse performance and capacity wise.  
+however ECS is considered easier to use
+#### AWS PAAS
+AWS Elastic Beanstalk  
+Almost Identical features to GCP App Engine but different names and has more customization options.
+#### AWS FAAS(Lambda+Fargate)
+Lambda is almost identical to Cloud functions except for names.
+
+AWS Fargate offers more control over networking and storage configurations, while 
+Cloud Run is designed specifically for stateless HTTP containers and provides automatic scaling based on incoming requests.  
+Fargate scales based on cpu usage.
+### AWS Database and Storage Services
+
+#### AWS NOSQL Databases
+
+##### DynamoDB
+DynamoDB is AWS's Key-Value **and** Document based database,it is considered to be the default database to use with AWS as a result of its scalability and data consistency
+##### DocumentDB
+DocumentDB is AWS's Document based database that is mongoDB compatible
+>its basically their own version of mongoDB cause legal things
+##### Amazon Keyspaces
+This is AWS's version of Apache Cassandra and it is a key/value database.
+
+
+#### AWS SQL Databases
+
+##### AWS RDS
+
+##### AWS Aurora
+#### AWS S3
+identical to Cloud Storage
+####  AWS EFS
+identical to Filestore
+#### AWS EBS
+identical to persistend disks
+### AWS Networking Services
+
+#### AWS VPC
+##### NACL
+These act as a firewall on the subnet level and contain both allow and deny rules.
+This is particularly useful if you want to block a specific ip address.
+##### Security Groups
+These act as a firewall at the instance level and can only contain allow rules since they implicitly deny all traffic,making it impossible to block specific ips since you would need to allow all other ips instead.
+### AWS IAM
+Just like in GCP IAM,AWS IAM manages permissions of users to access different resources,however there are some difference:
+
+- The Policies are applied to identities such as users,groups or roles or even to the resources themselves directly
+- Service accounts are called Roles
+- Policies can both allow and deny access
+- There are permission boundaries
+
+### AWS Big Data Services
+
+### AWS Messaging Services
+unlike GCP pubsub the messaging services for pub/sub are split into two
+a notification service and a queueing service
+
+#### AWS SQS
+It is a fully managed queueing service that enables you to decouple and scale microservices and distributed systems.
+used when you need messages to go through at a certain order and you want them to persist until they are read.
+however once a message is read it will be removed from the queue meaning the next reader will get the next message,therefore it cant be used to broadcast a message for multiple users at once
+#### AWS SNS
+It is a fully managed publish-subscribe messaging service that enables you to decouple and scale microservices and distributed systems.
+used when you want to broadcast messages to multiple subscribers simultaneously and deliver them in real-time.
