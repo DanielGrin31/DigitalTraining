@@ -1,0 +1,850 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   width="180.0369mm"
+   height="225.8078mm"
+   viewBox="0 0 180.0369 225.8078"
+   version="1.1"
+   id="svg8">
+  <style
+     id="style833"></style>
+  <defs
+     id="defs2">
+    <marker
+       style="overflow:visible"
+       id="marker8797"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path8795" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker8787"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path8785" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker7823"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path7821" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker7813"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path7811" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker7435"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path7433" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker7425"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path7423" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker6963"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path6961" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker6933"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path6931" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="Arrow1Lstart"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path3893" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker5309"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#61caff;fill-opacity:1;fill-rule:evenodd;stroke:#61caff;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path5307" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker5299"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill:#61caff;fill-opacity:1;fill-rule:evenodd;stroke:#61caff;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path5297" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker4895"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#96ff61;fill-opacity:1;fill-rule:evenodd;stroke:#96ff61;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path4893" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker4885"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill:#96ff61;fill-opacity:1;fill-rule:evenodd;stroke:#96ff61;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path4883" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker4525"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#ff6161;fill-opacity:1;fill-rule:evenodd;stroke:#ff6161;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path4523" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker4515"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill:#ff6161;fill-opacity:1;fill-rule:evenodd;stroke:#ff6161;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path4513" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker4103"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#ff60ff;fill-opacity:1;fill-rule:evenodd;stroke:#ff60ff;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path4101" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker4093"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill:#ff60ff;fill-opacity:1;fill-rule:evenodd;stroke:#ff60ff;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path4091" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker3713"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#ff60ff;fill-opacity:1;fill-rule:evenodd;stroke:#ff60ff;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path3711" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker3703"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#61caff;fill-opacity:1;fill-rule:evenodd;stroke:#61caff;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path3701" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker3693"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#96ff61;fill-opacity:1;fill-rule:evenodd;stroke:#96ff61;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path3691" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker3683"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#ff6161;fill-opacity:1;fill-rule:evenodd;stroke:#ff6161;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path3681" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker3673"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill:#ff60ff;fill-opacity:1;fill-rule:evenodd;stroke:#ff60ff;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path3671" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker3663"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill:#61caff;fill-opacity:1;fill-rule:evenodd;stroke:#61caff;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path3661" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker3653"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill:#96ff61;fill-opacity:1;fill-rule:evenodd;stroke:#96ff61;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path3651" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker3643"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill:#ff6161;fill-opacity:1;fill-rule:evenodd;stroke:#ff6161;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path3641" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker1691"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#ffaeff;fill-opacity:1;fill-rule:evenodd;stroke:#ffaeff;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1689" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker1681"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill:#ffaeff;fill-opacity:1;fill-rule:evenodd;stroke:#ffaeff;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path1679" />
+    </marker>
+    <radialGradient
+       xlink:href="#linearGradient902"
+       id="radialGradient7379"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.94203482,1.0217317,-0.990775,0.91349272,182.01766,-31.542096)"
+       cx="49.381924"
+       cy="182.47723"
+       fx="49.381924"
+       fy="182.47723"
+       r="27.184956" />
+    <linearGradient
+       id="linearGradient902">
+      <stop
+         style="stop-color:#ffaeff;stop-opacity:1"
+         offset="0"
+         id="stop898" />
+      <stop
+         style="stop-color:#fff6ff;stop-opacity:1"
+         offset="1"
+         id="stop900" />
+    </linearGradient>
+    <radialGradient
+       xlink:href="#linearGradient930"
+       id="radialGradient7377"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.1643711,0.75868633,-0.87742716,1.3466049,150.35486,-97.585528)"
+       cx="49.381924"
+       cy="182.47723"
+       fx="49.381924"
+       fy="182.47723"
+       r="27.184956" />
+    <linearGradient
+       id="linearGradient930">
+      <stop
+         style="stop-color:#ffaeae;stop-opacity:1"
+         offset="0"
+         id="stop926" />
+      <stop
+         style="stop-color:#fff6ff;stop-opacity:1"
+         offset="1"
+         id="stop928" />
+    </linearGradient>
+    <radialGradient
+       xlink:href="#linearGradient924"
+       id="radialGradient7375"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.1643711,0.75868633,-0.87742716,1.3466049,150.35486,-97.585528)"
+       cx="49.381924"
+       cy="182.47723"
+       fx="49.381924"
+       fy="182.47723"
+       r="27.184956" />
+    <linearGradient
+       id="linearGradient924">
+      <stop
+         style="stop-color:#c9ffae;stop-opacity:1"
+         offset="0"
+         id="stop920" />
+      <stop
+         style="stop-color:#fff6ff;stop-opacity:1"
+         offset="1"
+         id="stop922" />
+    </linearGradient>
+    <radialGradient
+       xlink:href="#linearGradient8285"
+       id="radialGradient7373"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.1643711,0.75868633,-0.87742716,1.3466049,150.35486,-97.585528)"
+       cx="49.381924"
+       cy="182.47723"
+       fx="49.381924"
+       fy="182.47723"
+       r="27.184956" />
+    <linearGradient
+       id="linearGradient8285">
+      <stop
+         style="stop-color:#f3ffae;stop-opacity:1"
+         offset="0"
+         id="stop8281" />
+      <stop
+         style="stop-color:#fff6ff;stop-opacity:1"
+         offset="1"
+         id="stop8283" />
+    </linearGradient>
+    <marker
+       style="overflow:visible"
+       id="marker6953"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path6951" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker6983"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path6981" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker6943"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path6941" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker6973"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path6971" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker6933-8"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path6931-7" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker6963-0"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path6961-4" />
+    </marker>
+    <radialGradient
+       xlink:href="#linearGradient902"
+       id="radialGradient7391"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(0.94203482,1.0217317,-0.990775,0.91349272,182.01766,-31.542096)"
+       cx="49.381924"
+       cy="182.47723"
+       fx="49.381924"
+       fy="182.47723"
+       r="27.184956" />
+    <radialGradient
+       xlink:href="#linearGradient930"
+       id="radialGradient7407"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.1643711,0.75868633,-0.87742716,1.3466049,150.35486,-97.585528)"
+       cx="49.381924"
+       cy="182.47723"
+       fx="49.381924"
+       fy="182.47723"
+       r="27.184956" />
+    <marker
+       style="overflow:visible"
+       id="marker7425-8"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path7423-0" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker7435-4"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path7433-2" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker7813-9"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path7811-6" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker7823-1"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path7821-0" />
+    </marker>
+    <radialGradient
+       xlink:href="#linearGradient918"
+       id="radialGradient8279"
+       gradientUnits="userSpaceOnUse"
+       gradientTransform="matrix(1.1643711,0.75868633,-0.87742716,1.3466049,150.35486,-97.585528)"
+       cx="49.381924"
+       cy="182.47723"
+       fx="49.381924"
+       fy="182.47723"
+       r="27.184956" />
+    <linearGradient
+       id="linearGradient918">
+      <stop
+         style="stop-color:#aee4ff;stop-opacity:1"
+         offset="0"
+         id="stop914" />
+      <stop
+         style="stop-color:#fff6ff;stop-opacity:1"
+         offset="1"
+         id="stop916" />
+    </linearGradient>
+    <marker
+       style="overflow:visible"
+       id="marker8303"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(0.4,0,0,0.4,4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path8301" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="marker8313"
+       refX="0"
+       refY="0"
+       orient="auto">
+      <path
+         transform="matrix(-0.4,0,0,-0.4,-4,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path8311" />
+    </marker>
+  </defs>
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     id="layer1"
+     transform="translate(-79.517322,-32.250978)">
+    <g
+       id="g6891"
+       transform="translate(52.422975,-8.0332756)">
+      <rect
+         style="fill:url(#radialGradient7379);fill-opacity:1;stroke:#333333;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect6883"
+         width="53.869911"
+         height="29.42193"
+         x="27.344347"
+         y="173.70447"
+         ry="5.708384" />
+      <text
+         xml:space="preserve"
+         style="font-size:8.53226px;line-height:1.25;font-family:sans-serif;text-align:center;word-spacing:0px;text-anchor:middle;stroke-width:0.213307"
+         x="54.292278"
+         y="186.69984"
+         id="text6889"><tspan
+           id="tspan6885"
+           x="54.292278"
+           y="186.69984"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle;stroke-width:0.213307">v1 Node.js</tspan><tspan
+           x="54.292278"
+           y="197.36517"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle;stroke-width:0.213307"
+           id="tspan6887">(backend)</tspan></text>
+    </g>
+    <g
+       id="g6905"
+       transform="translate(156.2958,-8.8763996)">
+      <rect
+         style="fill:url(#radialGradient7377);fill-opacity:1;stroke:#333333;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect6893"
+         width="53.869911"
+         height="29.42193"
+         x="27.344347"
+         y="173.70447"
+         ry="5.708384" />
+      <text
+         xml:space="preserve"
+         style="font-size:8.14304px;line-height:1.25;font-family:sans-serif;text-align:center;word-spacing:0px;text-anchor:middle;stroke-width:0.203577"
+         x="53.64687"
+         y="185.82886"
+         id="text6899"><tspan
+           id="tspan6895"
+           x="53.64687"
+           y="185.82886"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle;stroke-width:0.203577">v1 React v1</tspan><tspan
+           x="53.64687"
+           y="196.00766"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle;stroke-width:0.203577"
+           id="tspan6897">(frontend)</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:10.5833px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.264583"
+         x="40.846058"
+         y="192.27307"
+         id="text6903"><tspan
+           id="tspan6901"
+           x="40.846058"
+           y="192.27307"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';stroke-width:0.264583" /></text>
+    </g>
+    <g
+       id="g6913"
+       transform="translate(52.701296,54.682383)">
+      <rect
+         style="fill:url(#radialGradient7375);fill-opacity:1;stroke:#333333;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect6907"
+         width="53.869911"
+         height="29.42193"
+         x="27.344347"
+         y="173.70447"
+         ry="5.708384" />
+      <text
+         xml:space="preserve"
+         style="font-size:8.55367px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.213842"
+         x="30.756277"
+         y="190.92973"
+         id="text6911"><tspan
+           id="tspan6909"
+           x="30.756277"
+           y="190.92973"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';stroke-width:0.213842">MongoDB</tspan></text>
+    </g>
+    <g
+       id="g6923"
+       transform="translate(102.84146,-80.171265)">
+      <rect
+         style="fill:url(#radialGradient7373);fill-opacity:1;stroke:#333333;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect6915"
+         width="53.869911"
+         height="29.42193"
+         x="27.344347"
+         y="173.70447"
+         ry="5.708384" />
+      <text
+         xml:space="preserve"
+         style="font-size:9.96665px;line-height:1.25;font-family:sans-serif;text-align:center;word-spacing:0px;text-anchor:middle;stroke-width:0.249167"
+         x="54.693924"
+         y="185.12852"
+         id="text6921"><tspan
+           id="tspan6917"
+           x="54.693924"
+           y="185.12852"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle;stroke-width:0.249167">reverse</tspan><tspan
+           x="54.693924"
+           y="197.58684"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle;stroke-width:0.249167"
+           id="tspan6919">proxy</tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker6953);marker-end:url(#marker6983)"
+       d="m 151.68456,128.80544 -26.24725,28.95351"
+       id="path6925" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker6943);marker-end:url(#marker6973)"
+       d="m 170.52564,128.86456 29.09593,30.19568"
+       id="path6927" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker6933-8);marker-end:url(#marker6963-0)"
+       d="m 106.67887,198.19448 -0.20896,27.15132"
+       id="path6929" />
+    <g
+       id="g7389"
+       transform="translate(78.431286,-8.0332756)">
+      <rect
+         style="fill:url(#radialGradient7391);fill-opacity:1;stroke:#333333;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect7381"
+         width="53.869911"
+         height="29.42193"
+         x="27.344347"
+         y="173.70447"
+         ry="5.708384" />
+      <text
+         xml:space="preserve"
+         style="font-size:8.53226px;line-height:1.25;font-family:sans-serif;text-align:center;word-spacing:0px;text-anchor:middle;stroke-width:0.213307"
+         x="54.292278"
+         y="186.69984"
+         id="text7387"><tspan
+           id="tspan7383"
+           x="54.292278"
+           y="186.69984"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle;stroke-width:0.213307">v2 Node.js</tspan><tspan
+           x="54.292278"
+           y="197.36517"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle;stroke-width:0.213307"
+           id="tspan7385">(backend)</tspan></text>
+    </g>
+    <g
+       id="g7405"
+       transform="translate(178.08996,-8.8763996)">
+      <rect
+         style="fill:url(#radialGradient7407);fill-opacity:1;stroke:#333333;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect7393"
+         width="53.869911"
+         height="29.42193"
+         x="27.344347"
+         y="173.70447"
+         ry="5.708384" />
+      <text
+         xml:space="preserve"
+         style="font-size:8.14304px;line-height:1.25;font-family:sans-serif;text-align:center;word-spacing:0px;text-anchor:middle;stroke-width:0.203577"
+         x="53.64687"
+         y="185.82886"
+         id="text7399"><tspan
+           id="tspan7395"
+           x="53.64687"
+           y="185.82886"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle;stroke-width:0.203577">v2 React</tspan><tspan
+           x="53.64687"
+           y="196.00766"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle;stroke-width:0.203577"
+           id="tspan7397">(frontend)</tspan></text>
+      <text
+         xml:space="preserve"
+         style="font-size:10.5833px;line-height:1.25;font-family:sans-serif;word-spacing:0px;stroke-width:0.264583"
+         x="40.846058"
+         y="192.27307"
+         id="text7403"><tspan
+           id="tspan7401"
+           x="40.846058"
+           y="192.27307"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';stroke-width:0.264583" /></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker7425-8);marker-end:url(#marker7435-4)"
+       d="m 189.27537,130.06953 37.58261,29.76606"
+       id="path7421" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker7813-9);marker-end:url(#marker7823-1)"
+       d="M 135.63948,129.80072 99.152528,159.17116"
+       id="path7809" />
+    <g
+       id="g8277"
+       transform="translate(102.84146,-141.20349)">
+      <rect
+         style="fill:url(#radialGradient8279);fill-opacity:1;stroke:#333333;stroke-width:0.5;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect8269"
+         width="53.869911"
+         height="29.42193"
+         x="27.344347"
+         y="173.70447"
+         ry="5.708384" />
+      <text
+         xml:space="preserve"
+         style="font-size:9.96665px;line-height:1.25;font-family:sans-serif;text-align:center;word-spacing:0px;text-anchor:middle;stroke-width:0.249167"
+         x="54.693924"
+         y="185.12852"
+         id="text8275"><tspan
+           id="tspan8271"
+           x="54.693924"
+           y="185.12852"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle;stroke-width:0.249167">web</tspan><tspan
+           x="54.693924"
+           y="197.58684"
+           style="font-style:normal;font-variant:normal;font-weight:bold;font-stretch:normal;font-family:sans-serif;-inkscape-font-specification:'sans-serif Bold';text-align:center;text-anchor:middle;stroke-width:0.249167"
+           id="tspan8273">browser</tspan></text>
+    </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.2;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#marker8303);marker-end:url(#marker8313)"
+       d="m 157.49216,66.711201 0.0145,22.749298"
+       id="path8299" />
+  </g>
+</svg>
