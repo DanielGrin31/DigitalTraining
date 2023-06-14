@@ -14,6 +14,7 @@
 - [TCP And UDP](#tcp-and-udp)
 	1. [UDP](#udp)
 	2. [TCP](#tcp)
+	3. [Port Forwarding](#port-forwarding)
 - [IP](#tcp-and-udp)
 - [Ethernet](#tcp-and-udp)
 	1. [MAC Addresses](#mac-addresses)
@@ -23,6 +24,10 @@
 	1. [Load-Balancer](#load-balancer)
 	2. [Proxy Server](#proxy-server)
 - [Network Access Services](#network-access-services)
+- [Application Protocols](#application-protocols)
+	1. [HTTP/S](#https)
+	2. [SSH](#ssh)
+	3. [FTP](#ftp)
 - [VPN](#vpn)
 	1. [VPN Concentrator](#vpn-concentrator)
 	2. [VPN Protocols](#network-protocols)
@@ -89,6 +94,13 @@ A firewall is considered to be the first line of defence and can be places on mu
 it can be placed on routers,hosts or even on its own device.
 the purpose of a firewall is to examine each packet going through it against a set of rules,these rules can either allow or deny packets through the network and can be either incoming or outgoing rules specifying the direction of traffic.
 If the packet being examined matches a certain rule it is enforced and it can block packets from entering or leaving the network.
+#### VDOMS
+VDOM stands for Virtual Domain. It is a feature found in some network security devices, particularly in firewall solutions, that allows the creation of multiple virtual instances or domains within a single physical device.
+
+Each VDOM operates as an independent firewall with its own configuration, policies, interfaces, and security settings.
+
+The purpose of VDOMs is to provide logical separation and isolation of network resources and security policies within a single physical firewall. By dividing a firewall into multiple VDOMs, organizations can unify their network security infrastructure while maintaining strict segregation between different departments, business units, or customer environments.
+
 #### Unidirectional Gateway
 A unidirectional gateway is a network security device that allows data to flow in one direction only, while preventing any communication or data transmission in the opposite direction.  
 It is designed to ensure the strict unidirectional flow of information from a less secure or untrusted network to a more secure or trusted network, while preventing any data leakage or unauthorized access from the secure network to the untrusted network.  
@@ -162,7 +174,7 @@ Lastly there are SubDomains,these exist as records within the zones that contain
 **A:** stands for Address and it contains the IPv4 Address for a specific hostname or domain
 for example: `172.16.218.31`  
 **AAAA:** contains the IPv6 Address for a specific hostname or domain for example: `2001:0db8:85a3:0000:0000:8a2e:0370:7334`  
-**CNAME**: Stands for Canonical Name and points to another domain name,an alias.   
+**CNAME**: Stands for Canonical Name and points to another domain name,an alias. 
 **TXT**: Allows the addition of descriptive text to a domain or hostname. Often used for verification or providing additional information.  
 **NS**: Indicates the authoritative nameservers for a domain, specifying which servers are responsible for resolving the domain's DNS records. Example: `ns1.example.com` is an authoritative nameserver for `example.com`.
 
@@ -214,12 +226,20 @@ TCP assigns a **Sequence Number** for each byte sent,a field called Seq is assig
 when an ACK message is not sent after a certain period of time the message is resent by the sender. 
 #### Connection Establishment
 ![](./assets/images/tcp_handshake.png)
+
 The way of establishing a connection in TCP is also called the three-way handshake.  
 The process is as follows:  
 
 1. First packet is sent with a **SYN** flag set to 1 in the TCP Header,along with an inital Seq number,called the ISN which is randomly generated to avoid conflict between connections and the ACK flag set to 0.
 2. The Server then responds with a **SYN+ACK** packet which also has a its own SYN Flag set to 1 and ACK flag according to the Seq the client sent,its own Seq value is also randomly generated as its a separate stream of bits than the client to server one.
 3. Lastly the client sends an ACK packet to the SYN packet sent in the second step,this establishes the connection.
+### Port Forwarding
+Port Forwarding or Port Mapping is a method of rerouting traffic from one port of a device to another port of another or the same device.  
+It allows incoming traffic destined for a specific port on a public IP address to be forwarded to a specific port on a private IP address within a local network,see [NAT](#nat).
+
+Port forwarding is commonly used to enable access to services or applications hosted on a private network from the internet.
+
+By configuring port forwarding rules on a router or firewall, incoming requests to a specific port can be redirected to a designated device or server within the local network.
 
 ## IP
 IP or Internet Protocol is a protocol used for addressing and routing data packets across networks in order to enable communication between devices connected to the internet.
@@ -228,7 +248,8 @@ IP Addresses are the identifiers of devices on a network and include information
 
 IP Ranges are denoted by CIDR blocks,those indicate how many of the bits in the address are constant.  
 meaning `192.168.0.0/24` is `192.168.0.0 - 192.168.9.255` 
-![How Do IP Addresses Work?](./assets/images/ip_address_structure.png)
+![](./assets/images/ip_address_structure.png)
+
 IP Addresses are devided into two,Network ID and Host ID.  
 network ID represents the network portion of the IP address and identifies the specific network to which the device is connected. The host ID represents the host portion of the IP address and identifies the specific device within that network.  
 
@@ -269,7 +290,8 @@ MAC Addresses are divided into two parts:
 **Broadcast MAC Address:** `FF:FF:FF:FF:FF:FF` is a special MAC Address used to send a frame to all hosts in a network.
 
 ### Frame Structure
-![File:Ethernet II Frame Structure.png - Wikimedia Commons](./assets/images/Ethernet_II_Frame_Structure.png)
+![](./assets/images/Ethernet_II_Frame_Structure.png)
+
 
 - **Preamble:** constant sequence of bytes to sync two devices and notify the start of a new frame
 - **Destination Address:** Destination MAC Address
@@ -307,8 +329,82 @@ They encapsulate data into frames, assign MAC addresses (which are burned into t
 Remote Authentication Dial-In User Service (RADIUS) is a networking protocol and AAA (Authentication, Authorization, and Accounting) framework widely used for centralized authentication, authorization, and accounting management in network access scenarios.
 
 RADIUS operates at the application layer (Layer 7) of the OSI model. It provides a means for devices such as routers, switches, or access servers to communicate with a central RADIUS server for user authentication and authorization. When a user attempts to access a network resource, the device they connect to sends their credentials (username, password) to the RADIUS server. The RADIUS server then verifies the credentials against its user database and sends back a response indicating whether access should be granted or denied.
+## Application Protocols
+Application protcols are Layer 7 Protocols of the OSI layer and they allow communication between applications or services running on different devices or systems.
+### HTTP/S
+HTTP is a protocol that enables the transfer of HTML files, images, videos, and other resources between web servers and web browsers.  
+It uses port 80 by default and does not include encryption by itself.  
 
+HTTPS is a secure version of HTTP that uses encryption to protect the data transmitted between the client and the server,otherwise passwords and other sensitive data are sent in plaintext format.
 
+It adds a layer of security by using SSL/TLS to establish an encrypted connection,it uses port 443 by default.  
+To enable HTTPS, a website needs an SSL/TLS certificate installed on the server to establish a secure connection with the client's web browser.
+
+The HTTP protocol defines several methods or Verbs that specify the type of action to be performed on a resource.  
+These verbs can contain a body with data like POST or not like GET.
+  
+#### URL
+![URL Structure](./assets/images/url_structure.jpg)
+
+URL or Uniform Resource Locator is a string of characters that provides a standardized way to locate and access resources on the internet.  
+You can think of it like a personal address for a resource and its structured as follows:  
+
+- **Protocol:** can be HTTP/S or any other protocol supported by web browsers that use urls
+- **Domain:** the FQDN of the server hosting the resource we want to access,can also be an IP Address
+- **Port:** if the service we are trying to access is not on its default port (ex. HTTP:80) we can specify a port explicitely 
+- **Path:** A path to route the request to,can be a resource or an endpoint of an **API** etc.
+- **Query String:** Optional parameters that can be used to further customize the response or action.
+- **Fragment:** refers to a specific portion within a document or resource that is identified by an anchor or target. It is denoted by the hash symbol (#) followed by the fragment identifier.
+
+#### Headers
+HTTP headers are additional pieces of information included in the header section of an HTTP request or response.  
+They provide metadata or instructions about the request or response and help in facilitating communication between the client and the server.  
+HTTP headers are represented as key-value pairs.
+Common examples include:   
+
+-   **User-Agent:** Specifies the user agent (typically the web browser) making the request.
+-   **Accept:** Indicates the media types (content types) that the client can handle in the response.
+-   **Authorization:** Used for sending authentication credentials to access protected resources.
+-   **Content-Type:** Specifies the media type of the request body when sending data to the server.
+-   **Cookie:** Includes cookies previously set by the server and sent back to the server with subsequent requests.
+
+#### Cookies
+HTTP Cookies is data stored on the client-side (usually in the web browser) by websites that the client interacts with.  
+Cookies are used to maintain information between HTTP requests and responses over time,they have an expiration date and are used to maintain a state.  
+
+Cookies are set through the Set-Cookie Respones header and sent back to the server in the Cookie Header.  
+
+Common use cases for cookies include authentication,analytics and applying personalization such as website language. 
+
+### SSH
+SSH or Secure Shell is a layer 7 OSI protocol that uses encryption to secure the connection between a client and a server. All user authentication, commands, output, and file transfers are encrypted to ensure data confidentiality.  
+By default it uses port 22.
+
+![SSH_Client_Server](./assets/images/SSH_Client_Server.webp)
+
+The SSH connection is initiated by an SSH Client connecting to an SSH server,the client receives a public key sent by the server and first checks its authenticity to ensure that it corresponds to the server it intended to connect to,this prevents Man In The Middle Attacks.  
+
+the client uses the public key to encrypt a random session key. This session key is a symmetric encryption key that will be used to encrypt and decrypt the actual data transmitted between the client and the server.
+
+The server receives the encrypted session key from the client. Since the server possesses the corresponding private key for its public key, it can decrypt the encrypted session key.
+
+With the session key decrypted by the server, both the client and the server now have the same session key. They can use this session key to encrypt and decrypt the data transmitted during the SSH session. This ensures the confidentiality and integrity of the communication.
+
+Once a secure connection has been established you can use a username along with either a password or a secret key to authenticate with the server.
+
+### FTP
+FTP or File Transfer Protocol is a layer 7 OSI protocol for transferring files over a network. It provides a way to upload, download, and manage files on a remote server. FTP operates on port 21 by default.
+
+It uses a separate connection for transferring data and commands,the commands can be LIST(to list files) or RETR(retrieve a file) etc.
+
+`ftp://user:password@host:port/path`
+FTP URLs provide a way to identify and access FTP resources. They have a specific structure:
+
+-   **Protocol:** The protocol is set to "ftp://" to indicate an FTP resource.
+-   **Username and Password:** The username and password can be specified in the URL for authentication
+-   **Hostname:** The hostname represents the FTP server's address or hostname.
+-   **Port:** The port specifies the FTP control connection port (default is 21).
+-   **Path:** The path represents the directory or file path on the FTP server.
 ## VPN
 VPN or Virtual private network is a secure connection established between a remote host to access a private network through an encrypted tunnel through a public network.
 
@@ -352,6 +448,6 @@ Point To Point Tunneling Protocol is an older protocol that supports dial-up vpn
  TLS ensures the confidentiality and integrity of data transmitted over the network by encrypting the communication channel. It provides authentication, key exchange, and encryption algorithms to protect against eavesdropping, tampering, and unauthorized access.
 #### SSL
 SSL is an older cryptographic protocol that is very similar to TLS.  
-TLS is considered more secure than SSL. SSL 3.0 had several security vulnerabilities, leading to its deprecation. TLS has undergone more rigorous scrutiny and enhancements to address security weaknesses found in SSL.
-
-*[TLD]: Top Level Domain
+TLS is considered more secure than SSL.
+ SSL 3.0 had several security vulnerabilities, leading to its deprecation. 
+TLS has undergone more rigorous scrutiny and enhancements to address security weaknesses found in SSL.
