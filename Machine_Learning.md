@@ -32,8 +32,8 @@
 	6. [Classification](#classification)
 		- [Accuracy and cross entropy](#accuracy-and-cross-entropy)
 		- [Sigmoid](#sigmoid-function)
-	7. [convolutional neural networks](#convolutional-neural-networks)
-
+	7. [Convolutional Neural Networks](#convolutional-neural-networks)
+	8. [Time Series](#time-series)
 
 ## Machine learning
 
@@ -498,6 +498,98 @@ it is important to note,the closer the values are to 0 the more "sensitive" sigm
 
 
 ### Convolutional Neural Networks
+
+#### What Is Convolution?
+
+Convolution is an operation performed on input data,in involves using a matrix called the filter or the kernel matrix which contains different weights,the matrix is slid across the input data and elementwise-multiplication and summation is performed.
+
+In simple words we use the kernels to generate a new matrix containing the sums of element multiplication at different indexes of the "window" over the input data.
+
+<div align="center" style="display:flex;align-items: center;
+justify-items: center;flex-wrap: wrap;flex-direction: column;">
+	<div>
+		<img src="./assets/images/convolution_kernels.png" />
+		<p style="font-size:2em" align="center">Kernels</p>
+	</div>
+	<div>
+		<img src="./assets/images/convol.gif"  width="500"/>
+		<p style="font-size:2em" align="center">Convolution Operation</p>
+	</div>
+</p>
+</div>
+
+
+#### How Does It Help?
+Convolution is useful for extracting features out of raw data like images,or processing signals in sound or video.
+
+
+
+#### Convolution Steps
+we have an image of a car where each pixel of the image is translated to a numerical value representing its brightness (a value from 0 to 255),we apply 3 different steps to extract the features:  
+
+![](./assets/images/convol_steps.jpeg)
+
+
+1. **Filter:** this is the operation of using the sliding window and creating a new matrix as described above
+2. **Detect:** we use a ReLU function or another non-linear function for capturing complex patterns and adding more flexibility to the model by introducing non-linearity.
+3. **Condense** we use a condense function such as max-pooling to reduce the spatial dimensions and overall size of the network as well as allowing for translation invariance over small distances.
+
+
+
+The kernel values or **activations** are what determines the type of features that are extracted,here is an example showing how the different values produce different features.
+
+![](./assets/images/convol_kernels.png)
+
+
+#### Max Pooling
+Max pooling takes a patch of activations in the original feature map and replaces them with the maximum activation in that patch.
+
+When applied after the ReLU activation, it has the effect of "intensifying" features. The pooling step increases the proportion of active pixels to zero pixels.
+
+
+<p align="center">
+<img src="./assets/images/max_pooling.png" />
+</p>
+
+
+By using this function we give up some of the positional data in the image,pixels are now closer to each other and the resolution of the image is lower,this allows for the network to learn about shapes rather than position of the features in the image.
+
+This means that a convnet with maximum pooling will tend not to distinguish features by their location in the image. ("Translation" is the mathematical word for changing the position of something without rotating it or changing its shape or size.)
+
+
+
+#### Stride And Padding
+Sometimes we want the sliding window to move by a different amount and not a single unit everytime, we do this by changing the **Stride** parameter of the convolution,this means the sliding window will skip over some of the pixels in the input at each step.
+
+<p align="center">
+<img src="./assets/images/convol_stride.gif" width=500 />
+</p>
+
+
+**Padding** can be used at the edges of the input data in order to fill in with 0s for the rest of the kernels shape,if it is not used it would be impossible to calculate the convolution result at the edges and the matrix generated will have to be smaller in size than the input data. 
+
+
+	
+
+<p align="center">
+<img src="./assets/images/convol_padding.gif" width=500 />
+</p>
+
+#### Data Augmentation
+
+The best way to improve the performance of a machine learning model is to train it on more data. The more examples the model has to learn from, the better it will be able to recognize which differences in images matter and which do not. More data helps the model to generalize better.  
+
+One easy way of getting more data is to use the data you already have. If we can transform the images in our dataset in ways that preserve the class, we can teach our classifier to ignore those kinds of transformations. For instance, whether a car is facing left or right in a photo doesn't change the fact that it is a Car and not a Truck. So, if we augment our training data with flipped images, our classifier will learn that "left or right" is a difference it should ignore.  
+
+And that's the whole idea behind data augmentation: add in some extra fake data that looks reasonably like the real data and your classifier will improve.  
+
+<p align="center">
+<img src="./assets/images/DataAugmentation.png" width=500 />
+</p>
+
+
+### Time Series
+
 
 <scripts>
 <html><head>
