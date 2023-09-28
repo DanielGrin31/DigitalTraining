@@ -34,6 +34,7 @@
 		- [Sigmoid](#sigmoid-function)
 	7. [Convolutional Neural Networks](#convolutional-neural-networks)
 	8. [Time Series](#time-series)
+	9. [Indexing](#indexing)
 
 ## Machine learning
 
@@ -590,6 +591,45 @@ And that's the whole idea behind data augmentation: add in some extra fake data 
 
 ### Time Series
 
+### Indexing
+Indexing refers to the process of storing and organizing data into structures that enable quick and efficent access to information.
+
+Indexes are widely used in many areas such as databases,search engines and in the context of machine learning it is used for similarity search, which involves finding data points that are most similar to a given query point or pattern. This is crucial for tasks like recommendation systems, image recognition, and clustering.  
+
+
+#### Quantization
+Quantization is the process of representing data with reduced dimensionality without omitting important information.  
+In quantization, the continuous values of the data are mapped to a finite set of discrete levels or values which causes some precision to be lost.  
+
+##### Dimensionality Reduction VS Quantization 
+###### Dimensionality Reduction:    
+It focuses on finding and keeping the most important information in your data. It ignores the less important details. This can be really helpful when you have a lot of features, but not all of them are equally important for understanding the underlying patterns.
+
+###### Quantization:    
+It keeps all the data, but it groups similar things together. This is particularly useful when you have a lot of fine-grained information that you don't necessarily need in such great detail. By grouping similar things, you save space and make it easier to work with.
+
+##### Product Quantization
+Product Quantization refers to a technique of breaking down vectors with high dimensionality into subvectors and then performing quantization on them one by one,this allows for efficient storage of the data and it is very useful in tasks like nearest neighbor search in large datasets.  
+The process is as follows:  
+
+1. For each vector divide it into subvectors of size `M`, the dimensionality of the vector should be divisble by M for this to work.  
+2. Create  $2^{nbits}$ centroids that and perform k-means clustering on all subvectors of the vector  
+3. represent each sub-vector by a unique ID and the ID of the closest centroid to it  
+4. assemble the subvectors in their quantized representation of Id-centroidId and represent the whole vector in Ids  
+
+After quantizing both the dataset vectors and the query vector, you use the quantized representations to perform approximate similarity computations. This allows you to efficiently find vectors in the dataset that are similar to the query vector without having to compare the query to every single vector directly.  
+
+
+
+#### IVF
+Inverted File index is technique used in information retrieval to efficiently locate documents or data points in a dataset. It is particularly effective for large collections where the direct comparison of each item would be computationally expensive. Here's how IVF works:  
+
+1. Create `nlists` centroids and perform kmeans on the dataset to split the data into clusters  
+2. Create inverted lists which is a data structure that associates each cluster with the IDs of the vectors that belong to it.  
+
+after dividing the data into clusters when a new query is made the query vector also gets assigned a centroid and then the inverted list associated with the centroid is retrieved,this way you only compare the vectors within that centroid and it speeds up the lookup time for similarity search.  
+
+
 
 <scripts>
 <html><head>
@@ -607,3 +647,4 @@ And that's the whole idea behind data augmentation: add in some extra fake data 
 </script>
 </head></html>
 </scripts>
+
