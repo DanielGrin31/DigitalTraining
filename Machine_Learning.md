@@ -34,7 +34,8 @@
 		- [Sigmoid](#sigmoid-function)
 	7. [Convolutional Neural Networks](#convolutional-neural-networks)
 	8. [Time Series](#time-series)
-	9. [Indexing](#indexing)
+	9. [Recurrent Neural Networks](#recurrent-neural-networks)
+	10. [Indexing](#indexing)
 
 ## Machine learning
 
@@ -588,7 +589,7 @@ And that's the whole idea behind data augmentation: add in some extra fake data 
 <img src="./assets/images/DataAugmentation.png" width=500 />
 </p>
 
-
+### Recurrent Neural Networks
 ### Time Series
 
 ### Indexing
